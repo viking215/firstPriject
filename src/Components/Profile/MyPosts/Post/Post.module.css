@@ -1,0 +1,9 @@
+.item {
+    color: bisque;
+}
+
+.item img {
+    width: 70px;
+    border-radius: 50px;
+    border: 2px solid lightseagreen;
+}
