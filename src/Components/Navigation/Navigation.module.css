@@ -1,6 +1,7 @@
 .nav {
     grid-area: n;
-    background-color: chocolate;
+    background-color: orangered;
+    border-radius: 6px;
 }
 
 .item {
@@ -8,5 +9,6 @@
 }
 
 .item.active {
-    color: mediumspringgreen;
+    color: aliceblue;
+    font-weight: bold;
 }
