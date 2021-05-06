@@ -6,7 +6,13 @@
     "h h"
     "n  c";
 
-    grid-template-rows: 60px 5fr;
+    grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     grid-gap: 5px;
+}
+
+.app-wrapper-content {
+    grid-area: c;
+    border-radius: 5px;
+    background-color: thistle;
 }

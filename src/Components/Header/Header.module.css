@@ -1,7 +1,7 @@
 .header {
     grid-area: h;
-    background-color: tomato;
-    border-radius: 10px;
+    background-color: #d38822;
+    border-radius: 5px;
 }
 
 .header img {
