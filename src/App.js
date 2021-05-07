@@ -3,11 +3,12 @@ import './App.css';
 import Header from "./Components/Header/Header";
 import Navigation from "./Components/Navigation/Navigation";
 import Profile from "./Components/Profile/Profile";
-import Dialogs from "./Components/Dialogs/Dialogs";
+import MessageItem from "./Components/Dialogs/MessageItem/MessageItem";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom"
+import Dialogs from "./Components/Dialogs/Dialogs";
 
 
 const App = () => {

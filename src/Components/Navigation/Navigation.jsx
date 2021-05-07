@@ -5,7 +5,7 @@ const Navigation = () => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to="/profile" activeClassName={s.active}>Profile</NavLink>
+                <NavLink to="profile" activeClassName={s.active}>Profile</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to="messages" activeClassName={s.active}>Messages</NavLink>

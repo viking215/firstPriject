@@ -2,16 +2,27 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+
+    let postsData = [
+        {id: 1, text: 'Where the detonator?!', likesCount: 15},
+        {id: 2, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},
+    ]
+
+    let postsElements = postsData.map( p => <Post message={p.text} likesCount={p.likesCount}/>);
+
     return (
-        <div>
-            My posts
+        <div className={s.inf}>
+            <h2>My posts</h2>
             <div>
-                <textarea></textarea>
-                <button>Click here</button>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button>Click here</button>
+                </div>
             </div>
             <div className={s.posts}>
-                <Post message='Where the detonator?!' likeCount='15'/>
-                <Post message="You couldn't give it to an ordinary person in the crowd." likeCount='20'/>
+                {postsElements}
             </div>
         </div>
 

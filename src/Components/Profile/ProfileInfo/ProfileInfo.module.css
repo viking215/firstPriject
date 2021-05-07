@@ -1,7 +1,11 @@
 
-
 .image {
-
     border-radius: 5px;
     width: 1000px;
+}
+
+.inf {
+
+    padding: 10px;
+
 }
