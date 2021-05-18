@@ -1,7 +1,16 @@
 import s from './../Dialogs.module.css'
 
 const MessageItem = (props) => {
-    return <div className={s.message}>{props.text}</div>
+    let textElement
+    return (
+        <div>
+            <div className={s.mes}>
+                {props.text}
+            </div>
+
+        </div>
+
+    )
 }
 
 export default MessageItem;

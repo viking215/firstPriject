@@ -1,10 +1,27 @@
 .inf {
     padding: 10px;
-    background-color: #859eff;
-    border-radius: 5px;
+    background-color: #6f7175;
+    border-radius: 5px 5px 5px 0px;
+    color: white;
 }
 
 .posts {
-    margin-top: 10px;
+    margin-top: 20px;
+    }
+
+.but {
+    background-color: #859eff;
+    height: 20px;
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
 }
 
+textarea {
+    height: 50px;
+    width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}

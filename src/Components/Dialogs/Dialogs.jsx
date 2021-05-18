@@ -1,37 +1,30 @@
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import s from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
-
-const dialogsData = [
-    {id: 1, name: 'Super Man'},
-    {id: 2, name: 'Aqua Man'},
-    {id: 3, name: 'Flash'},
-    {id: 4, name: 'Wonder Woman'},
-    {id: 5, name: 'Kiborg'},
-]
-
-const messagesData = [
-    {id: 1, text: 'texttexttexttext'},
-    {id: 2, text: 'texttext'},
-    {id: 3, text: 'texttexttexttexttexttext'},
-]
+import React from "react";
 
 const Dialogs = (props) => {
 
 
+    let dialogsElements = props.state.dialogsData.map(dialog => <DialogItem avatar={dialog.ava} name={dialog.name} id={dialog.id}/>);
+    let messagesElements = props.state.messagesData.map(message => <MessageItem text={message.text}/>);
 
-    let dialogsElements = dialogsData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
-    let messagesElements = messagesData.map(message => <MessageItem text={message.text}/>);
-
-
+    let newMessage = React.createRef()
+    let sendMes = () => {
+        let mes = newMessage.current.value
+        alert(mes)
+    }
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogsElements}
             </div>
             <div className={s.messages}>
-                {messagesElements}
+                <div className={s.mcont}>{messagesElements}</div>
+                <div className={s.send}>
+                    <textarea ref={newMessage}></textarea>
+                    <button onClick={sendMes}>Send</button>
+                </div>
             </div>
         </div>
     )
