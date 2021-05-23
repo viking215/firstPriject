@@ -1,5 +1,6 @@
-import {renderEntireTree} from "../render";
-
+let renderEntireTree = () => {
+    console.log('state fuck')
+}
 const State = {
     profilePage: {
         postsData: [
@@ -7,6 +8,7 @@ const State = {
             {id: 1, text: 'Where the detonator?!', likesCount: 15},
             {id: 2, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},
         ],
+        newPostText: ""
     },
     dialogsPage: {
         dialogsData: [
@@ -33,6 +35,7 @@ const State = {
             {id: 2, text: 'texttext'},
             {id: 3, text: 'texttexttexttexttexttext'},
         ],
+        newMessageText: "",
     },
     sidebarPage: {
         friends: [
@@ -43,12 +46,42 @@ const State = {
     }
 };
 
-export let addPost = (postMessage) => {
+
+export const addPost = () => {
     let newPost = {
-        id: 5, text: postMessage, likesCount: 0,
+        id: 5, text: State.profilePage.newPostText, likesCount: 0,
     };
     State.profilePage.postsData.push(newPost)
-    renderEntireTree(State)
+    State.profilePage.newPostText = '';
+    renderEntireTree()
+
 };
 
+export const updateNewPostText = (newText) => {
+    State.profilePage.newPostText = newText
+    renderEntireTree()
+};
+let count = 0
+
+export const sendMes = () => {
+    const isMy = count % 2 === 0;
+    count += 1;
+    let newMessage = {
+        id: 4, text: State.dialogsPage.newMessageText, isMy,
+    };
+    State.dialogsPage.messagesData.push(newMessage);
+    State.dialogsPage.newMessageText = '';
+    renderEntireTree()
+}
+export const updateNewMessage = (newText) => {
+    State.dialogsPage.newMessageText = newText;
+    renderEntireTree()
+}
+
+export const subscribe = (observer) => {
+    renderEntireTree = observer;
+}
+
+
 export default State;
+

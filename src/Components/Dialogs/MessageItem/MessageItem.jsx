@@ -1,10 +1,9 @@
 import s from './../Dialogs.module.css'
 
 const MessageItem = (props) => {
-    let textElement
     return (
         <div>
-            <div className={s.mes}>
+            <div style={{alignItems: props.isMy ? 'flex-end' : 'flex-start'}} className={s.mes}>
                 {props.text}
             </div>
 

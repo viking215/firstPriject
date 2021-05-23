@@ -76,9 +76,16 @@
 }
 
 .mcont {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: start;
+    width: 100%;
+}
+
+.mes {
+    margin-bottom: 10px;
+    background-color: #859eff;
+    display: flex;
+    flex-direction: column;
+
+
 }
 
 
