@@ -1,3 +1,7 @@
+import profileReducer from "./ProfileReducer";
+import dialogsReducer from "./DialogsReducer";
+import {sidebarReducer} from "./SidebarReducer";
+
 const ADD_POST = 'ADD-POST';
 const U_N_P_T = 'UPDATE-NEW-POST-TEXT';
 const SEND_MES = 'SEND-MES';
@@ -72,38 +76,22 @@ let Store = {
     },
 
     dispath(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {id: 5, text: this._state.profilePage.newPostText, likesCount: 0,};
-            this._state.profilePage.postsData.push(newPost)
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === 'SEND-MES') {
-            let count = 0
-            const isMy = (count % 2 === 0)
-            count += 1;
-            let newMessage = {
-                id: 4, text: this._state.dialogsPage.newMessageText, isMy,
-            };
-            this._state.dialogsPage.messagesData.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === 'UPDATE-NEW-MESSAGE') {
-            this._state.dialogsPage.newMessageText = action.newText;
-            this._callSubscriber(this._state)
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
+
+        this._callSubscriber(this._state);
+
+        this._state.dialogsPage.newMessageText = action.newText;
+        this._callSubscriber(this._state)
     }
 }
 
-export const addPostActionCreator = () =>({type: ADD_POST})
+export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (text) => ({type: U_N_P_T, newText: text,});
 export const sendMesActionCreator = () => ({type: SEND_MES});
-export const updateNewMessageActionCreator = (text) =>({type: U_N_M, newText: text});
+export const updateNewMessageActionCreator = (text) => ({type: U_N_M, newText: text});
 
 export default Store;
 window.Store = Store;

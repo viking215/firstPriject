@@ -5,7 +5,7 @@ import Profile from "./Components/Profile/Profile";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
-import {BrowserRouter, Route} from "react-router-dom"
+import {Route} from "react-router-dom"
 import Dialogs from "./Components/Dialogs/Dialogs";
 import Friends from "./Components/Friends/Friends";
 
