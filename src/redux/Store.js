@@ -2,12 +2,7 @@ import profileReducer from "./ProfileReducer";
 import dialogsReducer from "./DialogsReducer";
 import {sidebarReducer} from "./SidebarReducer";
 
-const ADD_POST = 'ADD-POST';
-const U_N_P_T = 'UPDATE-NEW-POST-TEXT';
-const SEND_MES = 'SEND-MES';
-const U_N_M = 'UPDATE-NEW-MESSAGE';
-
-let Store = {
+const Store = {
     _state: {
         profilePage: {
             postsData: [
@@ -75,23 +70,15 @@ let Store = {
         this._callSubscriber = observer;
     },
 
-    dispath(action) {
+    dispatch(action) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
 
         this._callSubscriber(this._state);
-
-        this._state.dialogsPage.newMessageText = action.newText;
-        this._callSubscriber(this._state)
     }
 }
-
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) => ({type: U_N_P_T, newText: text,});
-export const sendMesActionCreator = () => ({type: SEND_MES});
-export const updateNewMessageActionCreator = (text) => ({type: U_N_M, newText: text});
 
 export default Store;
 window.Store = Store;
