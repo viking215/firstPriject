@@ -82,3 +82,4 @@ const Store = {
 
 export default Store;
 window.Store = Store;
+
