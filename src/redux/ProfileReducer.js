@@ -1,3 +1,5 @@
+import {act} from "@testing-library/react";
+
 const ADD_POST = 'ADD-POST';
 const U_N_P_T = 'UPDATE-NEW-POST-TEXT';
 
@@ -12,15 +14,23 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST:
-          let newPost = {id: 5, text: state.newPostText, likesCount: 0,};
-            state.postsData.push(newPost)
-            state.newPostText = '';
+        case ADD_POST: {
+
+            let newPost = {id: 5, text: state.newPostText, likesCount: 0,}
+            return {
+                ...state,
+                newPostText: '',
+                postsData: [...state.postsData, newPost]
+            }
+        }
+        case U_N_P_T: {
+            return {
+                ...state,
+                newPostText: action.newText,
+            };
+        }
+        default:
             return state;
-        case U_N_P_T:
-            state.newPostText = action.newText;
-            return state;
-        default: return state;
     }
 
     return state;

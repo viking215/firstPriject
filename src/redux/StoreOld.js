@@ -2,7 +2,7 @@ import profileReducer from "./ProfileReducer";
 import dialogsReducer from "./DialogsReducer";
 import {sidebarReducer} from "./SidebarReducer";
 
-const Store = {
+const StoreOld = {
     _state: {
         profilePage: {
             postsData: [
@@ -80,6 +80,5 @@ const Store = {
     }
 }
 
-export default Store;
-window.Store = Store;
+
 

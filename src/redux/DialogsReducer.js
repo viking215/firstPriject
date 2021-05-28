@@ -26,24 +26,30 @@ let initialDialogs = {
         {id: 2, text: 'texttext'},
         {id: 3, text: 'texttexttexttexttexttext'},
     ],
-    newMessageText: "",
+    newMessageText: '',
 };
 const dialogsReducer = (state = initialDialogs, action) => {
 
     switch (action.type) {
         case SEND_MES:
+
             let count = 0
             const isMy = (count % 2 === 0)
             count += 1;
             let newMessage = {
-                "id": 4, "text": state.newMessageText, isMy,
+                id: 4, text: state.newMessageText, isMy,
             };
-            state.messagesData.push(newMessage);
-            state.newMessageText = '';
-            return state;
-        case U_N_M:
-            state.newMessageText = action.newText;
-            return state;
+            return {
+                ...state,
+                newMessageText: '',
+                messagesData: [...state.messagesData, newMessage],
+            }
+        case U_N_M: {
+            return {
+                ...state,
+                newMessageText: action.newText
+            }
+        }
         default:
             return state;
     }
