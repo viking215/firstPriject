@@ -1,5 +1,3 @@
-import {act} from "@testing-library/react";
-
 const ADD_POST = 'ADD-POST';
 const U_N_P_T = 'UPDATE-NEW-POST-TEXT';
 
