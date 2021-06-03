@@ -32,8 +32,8 @@ const friendsReducer = (state = initialState, action) => {
         case SET_USERS: {
             return {
                 ...state,
-                friendsData: [...state.friendsData, ...action.users],
-
+                friendsData: [...action.users],
+                //...state.friendsData,
             }
         }
         default:
