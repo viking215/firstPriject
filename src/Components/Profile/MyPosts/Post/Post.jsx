@@ -7,7 +7,7 @@ const Post = (props) => {
                 src='https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png'/>
             <span className={s.text}>{props.message}</span>
             <div className={s.likes}>
-                <span>Likes:</span> {props.likesCount}
+                <span>Likes:    {props.likesCount}       <img src='https://toppng.com/uploads/preview/like-heart-11551048696fib6y57o3r.png'/></span>
             </div>
         </div>
     )

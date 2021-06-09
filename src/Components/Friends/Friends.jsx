@@ -1,18 +1,26 @@
 import React from "react";
-import styles from './friends.module.css'
-import * as axios from "axios";
-import userPhoto from '../../assets/images/user.png'
-
+import styles from "./friends.module.css";
+import userPhoto from "../../assets/images/user.png";
 
 const Friends = (props) => {
-    if (props.friendsData.length === 0) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => {
-                props.setUsers(response.data.items);
-            });
+
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
 
     return <div>
+        <div>
+            {pages.map(page => {
+                return <span className={props.currentPage === page && styles.selectedPage}
+                             onClick={(e) => {
+                                 props.onPageChanged(page)
+                             }}>{`${page} `}</span>
+            })}
+        </div>
+
         {
             props.friendsData.map(u => <div key={u.id}>
                 <span>
@@ -22,13 +30,13 @@ const Friends = (props) => {
                     <div>
                         {u.followed ? <button onClick={() => {
                                 props.unfollow(u.id)
-                            }}>unFOLLOW</button>
+                            }}>Unfollow</button>
                             : <button onClick={() => {
                                 props.follow(u.id)
-                            }}>FOLLOW</button>}
+                            }}>Follow</button>}
                         </div>
                 </span>
-                <span>
+                    <span>
                     <span>
                         <div>{u.name}</div>
                         <div>{u.status}</div>
@@ -38,8 +46,8 @@ const Friends = (props) => {
                         <div>{"u.location.city"}</div>
                     </span>
                 </span>
-            </div>)
-        }
+                </div>
+            )}
     </div>
 }
 

@@ -27,9 +27,10 @@ const Navigation = (props) => {
             </div>
             <div className={s.friends}>
                 <div className={s.head}>
-                    <NavLink to="/friends" activeClassName={s.active}>Friends</NavLink></div>
+                    <NavLink to="/friends" activeClassName={s.active}>Friends</NavLink>
+                </div>
                 <div className={s.name}>
-                    {/*<NavLink to="/friends" activeClassName={s.active}>*/}{friendBlock}{/*</NavLink>*/}
+                    {friendBlock}
                 </div>
             </div>
         </nav>
