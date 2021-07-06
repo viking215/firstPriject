@@ -30,9 +30,7 @@ const profileReducer = (state = initialState, action) => {
         default:
             return state;
     }
-
-    return state;
-}
+    return state;}
 
 export const addPost = () => ({type: ADD_POST})
 export const updateNewPostText = (text) => ({type: U_N_P_T, newText: text,});
