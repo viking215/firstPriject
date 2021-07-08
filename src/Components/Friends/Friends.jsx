@@ -26,9 +26,9 @@ const Friends = (props) => {
             props.friendsData.map(u => <div key={u.id}>
                 <span>
                     <div>
-                       {/* <NavLink to{'profile/' + }>*/}
+                        <NavLink to={'/profile/' + u.id}>
                         <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.avatar}/>
-                        {/*</NavLink>*/}
+                        </NavLink>
                     </div>
                     <div>
                         {u.followed ? <button onClick={() => {

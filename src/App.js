@@ -1,6 +1,5 @@
 import './App.css';
 import Header from "./Components/Header/Header";
-import Profile from "./Components/Profile/Profile";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
@@ -8,6 +7,7 @@ import {Route} from "react-router-dom"
 import FriendsContainer from "./Components/Friends/FriendsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import NavigationContainer from "./Components/Navigation/NavigationContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 const App = () => {
     return (
@@ -16,7 +16,7 @@ const App = () => {
             <NavigationContainer />
             <div className='app-wrapper-content'>
 
-                <Route path="/profile" render={() => <Profile />}/>
+                <Route path="/profile" render={() => <ProfileContainer />}/>
 
                 <Route path="/messages" render={() => <DialogsContainer />}/>
 
