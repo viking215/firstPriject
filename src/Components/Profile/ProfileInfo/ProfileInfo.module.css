@@ -1,4 +1,47 @@
 
+.back {
+    height: 250px;
+    width: 700px;
+}
+
+.avatar {
+    border-radius: 200px;
+    height: 200px;
+    border: 5px solid white;
+}
+
+.name {
+    font-size: 30px;
+    color: #8ab4f8;
+    padding-left: 15px;
+}
+
+
+
+
+.middle {
+    padding: 0px 10px 10px 30px;
+}
+
+.filter details {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.filter summary {
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filter summary:hover {
+    color: #8ab4f8;
+}
+.item {
+    padding-top: 5px;
+    font-size: 15px;
+    color: #8ab4f8;
+}
+/*
 .inf {
     margin-top: 0px;
     padding: 20px;
@@ -13,7 +56,5 @@
     padding: 20px;
 }
 
-.avatar {
-    border-radius: 50px;
-    height: 250px;
-}
+
+*/
