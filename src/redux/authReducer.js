@@ -5,6 +5,7 @@ let initialState = {
     id: null,
     email: null,
     login: null,
+    isAuth: false,
     isFetching: false,
 
 }
@@ -15,6 +16,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
+                isAuth: true,
             }
 
         default:
@@ -22,6 +24,6 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserData = (id, email, login,) => ({type: SET_USER_DATA, data: {id, email, login}})
+export const setAuthUserData = (id, email, login,) => ({type: SET_USER_DATA, data: {id, email, login}})
 
-export default authReducer();
+export default authReducer;

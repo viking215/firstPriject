@@ -1,7 +1,7 @@
 import {combineReducers, createStore} from "redux";
 import profileReducer from "./ProfileReducer";
 import dialogsReducer from "./DialogsReducer";
-import {sidebarReducer} from "./SidebarReducer";
+import sidebarReducer from "./SidebarReducer";
 import friendsReducer from "./FriendsReducer";
 import authReducer from "./authReducer";
 

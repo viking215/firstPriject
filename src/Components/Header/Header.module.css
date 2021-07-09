@@ -9,24 +9,27 @@
 
 .header img {
     width: 50px;
-
 }
 
 .upper {
     color: #8ab4f8;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 15fr 3fr;
     grid-column-gap: 30px;
-    justify-items: start;
+    justify-items: center;
     align-items: center;
+
 }
 
-.upper span {
+.upper .name {
     font-size: 30px;
 
 }
 
-.loginBlock {
+.upper .loginBlock a{
     float: right;
+    text-decoration: none;
+    color: #929292;
+
 }
 

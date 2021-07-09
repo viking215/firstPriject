@@ -1,5 +1,5 @@
 import './App.css';
-import Header from "./Components/Header/Header";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
@@ -12,7 +12,7 @@ import ProfileContainer from "./Components/Profile/ProfileContainer";
 const App = () => {
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <NavigationContainer />
             <div className='app-wrapper-content'>
 
