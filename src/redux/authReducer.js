@@ -1,5 +1,5 @@
 const SET_USER_DATA = 'SET_USER_DATA';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+/*const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';*/
 
 let initialState = {
     id: null,

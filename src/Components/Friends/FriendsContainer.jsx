@@ -8,31 +8,29 @@ import {
     togleIsFetching,
     unfollow
 } from "../../redux/FriendsReducer";
-import * as axios from "axios";
 import Friends from "./Friends";
 import Preloader from "../common/preloader/preloader";
+import usersAPI from "../../api/api";
 
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.togleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.togleIsFetching(false)
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
-            });
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.togleIsFetching(false)
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
+        });
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.togleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.togleIsFetching(false)
-                this.props.setUsers(response.data.items);
-            });
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+            this.props.togleIsFetching(false)
+            this.props.setUsers(data.items);
+        });
     }
 
     render() {
@@ -60,4 +58,11 @@ const mapStateToProps = (state) => {
         isFetching: state.friendsData.isFetching,
     }
 }
-export default connect(mapStateToProps,{follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, togleIsFetching,})(FriendsContainer);
+export default connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    togleIsFetching,
+})(FriendsContainer);
