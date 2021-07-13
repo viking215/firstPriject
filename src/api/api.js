@@ -21,6 +21,14 @@ const usersAPI = {
     authMe() {
         return instance.get(`auth/me`)
             .then(response => response.data)
+    },
+    deleteFollow(idNum) {
+        return instance.delete(`follow/${idNum}`)
+            .then(response => response.data)
+    },
+    postFollow(idNum) {
+        return instance.post(`follow/${idNum}`)
+            .then(response => response.data)
     }
 }
 

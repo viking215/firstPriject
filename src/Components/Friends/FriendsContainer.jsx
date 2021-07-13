@@ -13,6 +13,7 @@ import Preloader from "../common/preloader/preloader";
 import usersAPI from "../../api/api";
 
 
+
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
@@ -23,6 +24,24 @@ class FriendsContainer extends React.Component {
             this.props.setTotalUsersCount(data.totalCount);
         });
     }
+
+    unfollowClick = (idNum) => {
+        usersAPI.deleteFollow(idNum).then(data => {
+            if (data.resultCode === 0) {
+                this.props.unfollow(idNum)
+            }
+        })
+        this.props.unfollow(idNum)
+    }
+
+    followClick = (idNum) => {
+        usersAPI.postFollow(idNum, {}).then(data => {
+                if (data.resultCode === 0) {
+                    this.props.follow(idNum)
+                }
+            });
+    }
+
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
@@ -41,8 +60,8 @@ class FriendsContainer extends React.Component {
                      currentPage={this.props.currentPage}
                      friendsData={this.props.friendsData}
                      onPageChanged={this.onPageChanged}
-                     follow={this.props.follow}
-                     unfollow={this.props.unfollow}
+                     unfollowClick={this.unfollowClick}
+                     followClick={this.followClick}
             />
         </>
     }
