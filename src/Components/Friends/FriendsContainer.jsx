@@ -4,14 +4,13 @@ import {
     follow,
     setCurrentPage,
     setTotalUsersCount,
-    setUsers,
+    setUsers, toggleFollowingProgress,
     togleIsFetching,
-    unfollow
+    unfollow,
 } from "../../redux/FriendsReducer";
 import Friends from "./Friends";
 import Preloader from "../common/preloader/preloader";
 import usersAPI from "../../api/api";
-
 
 
 class FriendsContainer extends React.Component {
@@ -26,20 +25,25 @@ class FriendsContainer extends React.Component {
     }
 
     unfollowClick = (idNum) => {
+        this.props.toggleFollowingProgress(true, idNum)
         usersAPI.deleteFollow(idNum).then(data => {
             if (data.resultCode === 0) {
                 this.props.unfollow(idNum)
             }
+            this.props.toggleFollowingProgress(false, idNum)
         })
-        this.props.unfollow(idNum)
+
     }
 
     followClick = (idNum) => {
-        usersAPI.postFollow(idNum, {}).then(data => {
-                if (data.resultCode === 0) {
-                    this.props.follow(idNum)
-                }
-            });
+        this.props.toggleFollowingProgress(true, idNum)
+        usersAPI.createFollow(idNum, {}).then(data => {
+            if (data.resultCode === 0) {
+                this.props.follow(idNum)
+            }
+            this.props.toggleFollowingProgress(false, idNum)
+        });
+
     }
 
 
@@ -55,10 +59,7 @@ class FriendsContainer extends React.Component {
     render() {
         return <>
             {this.props.isFetching ? <Preloader/> : null}
-            <Friends totalUsersCount={this.props.totalUsersCount}
-                     pageSize={this.props.pageSize}
-                     currentPage={this.props.currentPage}
-                     friendsData={this.props.friendsData}
+            <Friends {...this.props}
                      onPageChanged={this.onPageChanged}
                      unfollowClick={this.unfollowClick}
                      followClick={this.followClick}
@@ -69,12 +70,14 @@ class FriendsContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
+
+     return {
         friendsData: state.friendsData.friendsData,
         pageSize: state.friendsData.pageSize,
         totalUsersCount: state.friendsData.totalUsersCount,
         currentPage: state.friendsData.currentPage,
         isFetching: state.friendsData.isFetching,
+        followingInProgress: state.friendsData.followingInProgress,
     }
 }
 export default connect(mapStateToProps, {
@@ -84,4 +87,5 @@ export default connect(mapStateToProps, {
     setCurrentPage,
     setTotalUsersCount,
     togleIsFetching,
+    toggleFollowingProgress,
 })(FriendsContainer);

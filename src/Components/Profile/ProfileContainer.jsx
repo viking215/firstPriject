@@ -8,7 +8,6 @@ import usersAPI from "../../api/api";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        debugger
 
         usersAPI.getProfile(this.props.match.params.userId).then(data => {
 

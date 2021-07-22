@@ -2,10 +2,11 @@ import React from "react";
 import styles from "./friends.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 import Pagination from "../../libs/Pagination";
 
+
 const Friends = (props) => {
+
 
 
     return <div>
@@ -20,8 +21,12 @@ const Friends = (props) => {
                         </NavLink>
                     </div>
                     <div>
-                        {u.followed ? <button onClick={() => {props.unfollowClick(u.id)}}>Unfollow</button>
-                                    : <button onClick={() => {props.followClick(u.id)}}>Follow</button>}
+                        {u.followed ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.unfollowClick(u.id)
+                            }}>Unfollow</button>
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.followClick(u.id)
+                            }}>Follow</button>}
                         </div>
                 </span>
                     <span>
@@ -36,6 +41,8 @@ const Friends = (props) => {
                 </span>
                 </div>
             )}
+        <Pagination onPageChanged={props.onPageChanged} totalUsersCount={props.totalUsersCount}
+                    pageSize={props.pageSize}/>
     </div>
 }
 
