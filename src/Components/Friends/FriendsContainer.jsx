@@ -1,59 +1,31 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
-    setCurrentPage,
-    setTotalUsersCount,
-    setUsers, toggleFollowingProgress,
-    togleIsFetching,
+    follow, getUsers,
+    setCurrentPage, toggleFollowingProgress,
     unfollow,
 } from "../../redux/FriendsReducer";
 import Friends from "./Friends";
 import Preloader from "../common/preloader/preloader";
-import usersAPI from "../../api/api";
 
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.togleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.togleIsFetching(false)
-            this.props.setUsers(data.items);
-            this.props.setTotalUsersCount(data.totalCount);
-        });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     unfollowClick = (idNum) => {
-        this.props.toggleFollowingProgress(true, idNum)
-        usersAPI.deleteFollow(idNum).then(data => {
-            if (data.resultCode === 0) {
-                this.props.unfollow(idNum)
-            }
-            this.props.toggleFollowingProgress(false, idNum)
-        })
-
+        this.props.unfollow(idNum)
     }
 
     followClick = (idNum) => {
-        this.props.toggleFollowingProgress(true, idNum)
-        usersAPI.createFollow(idNum, {}).then(data => {
-            if (data.resultCode === 0) {
-                this.props.follow(idNum)
-            }
-            this.props.toggleFollowingProgress(false, idNum)
-        });
-
+        this.props.follow(idNum)
     }
 
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.togleIsFetching(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.togleIsFetching(false)
-            this.props.setUsers(data.items);
-        });
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -66,7 +38,7 @@ class FriendsContainer extends React.Component {
             />
         </>
     }
-
+l
 }
 
 const mapStateToProps = (state) => {
@@ -83,9 +55,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    togleIsFetching,
     toggleFollowingProgress,
+    getUsers,
 })(FriendsContainer);

@@ -20,13 +20,9 @@ const usersAPI = {
             .then(response => response.data)
     },
 
-    authMe() {
-        return instance.get(`auth/me`)
-            .then(response => response.data)
-    },
 
     deleteFollow(idNum) {
-       return instance.delete(`follow/${idNum}`)
+        return instance.delete(`follow/${idNum}`)
             .then(response => response.data)
     },
 
@@ -35,6 +31,13 @@ const usersAPI = {
             .then(response => response.data)
     },
 
+}
+
+export const authAPI = {
+    authMe() {
+        return instance.get(`auth/me`)
+            .then(response => response.data)
+    },
 }
 
 export default usersAPI

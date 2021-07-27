@@ -21,7 +21,8 @@ const Friends = (props) => {
                         </NavLink>
                     </div>
                     <div>
-                        {u.followed ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                        {u.followed
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
                                 props.unfollowClick(u.id)
                             }}>Unfollow</button>
                             : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
@@ -31,7 +32,7 @@ const Friends = (props) => {
                 </span>
                     <span>
                     <span>
-                        <div>{u.name}</div>
+                        <div>{u.name}</div>l
                         <div>{u.status}</div>
                     </span>
                     <span>
