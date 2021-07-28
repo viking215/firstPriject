@@ -2,6 +2,7 @@ import s from './ProfileInfo.module.css'
 import Preloader from "../../common/preloader/preloader";
 import profileBackground from "../../../assets/images/profileBackground.jpg"
 import userPhoto from "../../../assets/images/user.png"
+import ProfileStatus from "./ProfileStatus"
 
 
 const ProfileInfo = (props) => {
@@ -9,6 +10,7 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
+    debugger
     return (
         <div className={s.head}>
             <img className={s.back} src={profileBackground}/>
@@ -17,6 +19,7 @@ const ProfileInfo = (props) => {
                 <div className={s.middle}>
                     <img className={s.avatar} src={props.profile.photos.large != null ?
                         props.profile.photos.large : userPhoto}/>
+                    <ProfileStatus status={props.status}/>
                     <span className={s.name}>{props.profile.fullName}</span>
                     <div>About me: {props.profile.aboutMe}</div>
                 </div>

@@ -34,6 +34,7 @@ export const authMe = () => {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login));
             }
+
         })
     }
 }

@@ -15,12 +15,6 @@ const usersAPI = {
             .then(response => response.data)
     },
 
-    getProfile(userId = 2) {
-        return instance.get(`profile/${userId}`)
-            .then(response => response.data)
-    },
-
-
     deleteFollow(idNum) {
         return instance.delete(`follow/${idNum}`)
             .then(response => response.data)
@@ -38,6 +32,23 @@ export const authAPI = {
         return instance.get(`auth/me`)
             .then(response => response.data)
     },
+}
+
+export const profileAPI = {
+    getProfile(userId = 2) {
+        return instance.get(`profile/${userId}`)
+            .then(response => response.data)
+    },
+
+    getStatus(userId = 2) {
+      return instance.get(`profile/status/${userId}`)
+            .then(response => response.data)
+    },
+    updateStatus(status, {}) {
+        return instance.put(`profile/status`, {status: status})
+            .then(response => response.data)
+    }
+
 }
 
 export default usersAPI

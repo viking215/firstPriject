@@ -7,6 +7,8 @@ import {
 } from "../../redux/FriendsReducer";
 import Friends from "./Friends";
 import Preloader from "../common/preloader/preloader";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class FriendsContainer extends React.Component {
@@ -38,7 +40,6 @@ class FriendsContainer extends React.Component {
             />
         </>
     }
-l
 }
 
 const mapStateToProps = (state) => {
@@ -52,10 +53,17 @@ const mapStateToProps = (state) => {
         followingInProgress: state.friendsData.followingInProgress,
     }
 }
-export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setCurrentPage,
-    toggleFollowingProgress,
-    getUsers,
-})(FriendsContainer);
+
+
+export default compose(
+    connect(mapStateToProps, {
+        follow,
+        unfollow,
+        setCurrentPage,
+        toggleFollowingProgress,
+        getUsers,
+    }),
+    withAuthRedirect,
+) (FriendsContainer)
+
+
