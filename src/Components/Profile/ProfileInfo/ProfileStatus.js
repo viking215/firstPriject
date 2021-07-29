@@ -2,8 +2,11 @@ import s from './ProfileInfo.module.css'
 import React from 'react'
 
 class ProfileStatus extends React.Component {
+
+
     state = {
         editMode: false,
+        status: this.props.status
     }
 
     handleFocus = (event) => {
@@ -12,29 +15,36 @@ class ProfileStatus extends React.Component {
 
     activateEditMode = () => {
         this.setState({
-            editMode: true
+            editMode: true,
         })
-
     }
     deactivateEditMode = () => {
         this.setState({
-            editMode: false
+            editMode: false,
         })
+        this.props.updateStatus(this.state.status)
+    }
 
+    onStatusChange = (e) => {
+        debugger
+        this.setState({
+            status: e.target.value
+        })
     }
 
     render() {
         return (
             <div>
                 {!this.state.editMode &&
-                    <div>
-                        <span onDoubleClick={ this.activateEditMode}>{this.props.status}</span>
-                    </div>
+                <div>
+                    <span onDoubleClick={this.activateEditMode}>{this.props.status || 'Click for set status'}</span>
+                </div>
                 }
                 {this.state.editMode &&
-                    <div>
-                        <input autoFocus={this.handleFocus} onBlur={this.deactivateEditMode} value={this.props.status}/>
-                    </div>
+                <div>
+                    <input onChange={this.onStatusChange} autoFocus={this.handleFocus} onBlur={this.deactivateEditMode}
+                           value={this.state.status}/>
+                </div>
                 }
             </div>
 

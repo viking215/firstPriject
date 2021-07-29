@@ -3,7 +3,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = 'ADD-POST';
 const U_N_P_T = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const SET_STATUS = 'SET_USER_PROFILE'
+const SET_STATUS = 'SET_STATUS'
 
 let initialState = {
     postsData: [
@@ -57,10 +57,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPostAC = () => ({type: ADD_POST})
 export const updateNewPostTextAC = (text) => ({type: U_N_P_T, newText: text,});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
-export const setStatus = (status) => {
-    debugger
-    return {type: SET_STATUS, status}
-};
+export const setStatus = (status) => ({type: SET_STATUS, status});
 
 export const getProfile = (userId) => {
     return (dispatch) => {
@@ -73,17 +70,19 @@ export const getProfile = (userId) => {
 export const getStatus = (userId) => {
     return (dispatch) => {
         profileAPI.getStatus(userId).then(data => {
-    debugger
                dispatch(setStatus(data))
         });
+
     }
 }
 
 export const updateStatus = (status) => {
     return (dispatch) => {
         profileAPI.updateStatus(status).then(data => {
+            debugger
             if (data.resultCode === 0) {
-                dispatch(setStatus(data))
+                debugger
+                dispatch(setStatus(status))
             }
         });
     }
