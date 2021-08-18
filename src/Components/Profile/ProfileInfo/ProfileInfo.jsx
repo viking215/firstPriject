@@ -9,7 +9,6 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
-    debugger
     return (
         <div className={s.head}>
             <img className={s.back} src={profileBackground}/>

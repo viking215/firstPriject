@@ -2,26 +2,44 @@ import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import s from './Dialogs.module.css'
 import React from "react";
-import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../utilities/validation/validators";
+import {Textarea} from "../common/FormsControls/formsControls";
+
+
+const maxLength100 = maxLengthCreator(100)
+
+const MessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field placeholder={'^-^'}
+                       component={Textarea}
+                       name={'newMessageText'}
+                       validate={[required, maxLength100]}/>
+                <button>Send</button>
+            </div>
+        </form>
+    )
+}
+
+const MessageReduxForm = reduxForm({
+    form: 'message'
+})(MessageForm)
 
 const Dialogs = (props) => {
 
-    let state = props.dialogsPage
+    let dialogsElements = props.dialogsPage.dialogsData
+        .map(dialog => <DialogItem avatar={dialog.ava} name={dialog.name} key={dialog.id} id={dialog.id}/>);
+    let messagesElements = props.dialogsPage.messagesData
+        .map(message => <MessageItem text={message.text} key={message.id}/>);
 
-    let dialogsElements = state.dialogsData.map(dialog => <DialogItem avatar={dialog.ava} name={dialog.name} key={dialog.id} id={dialog.id}/>);
-    let messagesElements = state.messagesData.map(message => <MessageItem text={message.text} key={message.id}/>);
 
-    let newMessage = React.createRef()
-    let sendMes = () => {
-        props.sendMes();
+    const addNewMessage = (values) => {
+        props.sendMes(values.newMessageText)
     }
-    let onMesChange = () => {
-        let text = newMessage.current.value;
-        props.updateNewMessage(text);
-    }
-
-
     return (
+
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogsElements}
@@ -29,8 +47,7 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 <div className={s.mcont}>{messagesElements}</div>
                 <div className={s.send}>
-                    <textarea onChange={onMesChange} ref={newMessage} value={state.newMessageText}/>
-                    <button onClick={sendMes}>Send</button>
+                    <MessageReduxForm onSubmit={addNewMessage}/>
                 </div>
             </div>
         </div>

@@ -9,7 +9,9 @@ const Header = (props) => {
                     src='https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png'/>
                 <span className={s.name}>Hi, i'm messager</span>
                 <span className={s.loginBlock}>
-                    {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+                    {props.isAuth
+                        ? <div>{props.login}    <button onClick={props.authLogout}>Log out</button></div>
+                        : <NavLink to={'/login'}>Login</NavLink>}
 
             </span>
             </div>
