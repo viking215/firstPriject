@@ -1,4 +1,5 @@
 import usersAPI from "../api/api";
+import {updateObjectOfArray} from "../libs/CasesUnion";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -22,24 +23,13 @@ const friendsReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                friendsData: state.friendsData.map(f => {
-                    if (f.id === action.userId) {
-                        return {...f, followed: true}
-                    }
-                    return f;
-
-                })
+                friendsData: updateObjectOfArray(state.friendsData, action.userId, 'id', {followed: true})
             }
         case UNFOLLOW:
             return {
                 ...state,
-                friendsData: state.friendsData.map(f => {
-                    if (f.id === action.userId) {
-                        return {...f, followed: false}
-                    }
-                    return f;
-                })
-            }
+                friendsData: updateObjectOfArray(state.friendsData, action.userId, 'id', {followed: false})
+    }
         case SET_USERS: {
             return {
                 ...state, friendsData: [...action.users],
@@ -82,38 +72,31 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
     userId
 })
 
-export const getUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispatch(togleIsFetching(true))
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(togleIsFetching(false))
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-        });
-    }
+export const getUsers = (currentPage, pageSize) => async (dispatch) => {
+    dispatch(togleIsFetching(true))
+    const data = await usersAPI.getUsers(currentPage, pageSize)
+
+    dispatch(togleIsFetching(false))
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
 }
 
-export const follow = (idNum) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, idNum))
-        usersAPI.createFollow(idNum, {}).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(followSuccess(idNum))
-            }
-            dispatch(toggleFollowingProgress(false, idNum))
-        });
+const followUnfollowFlow = async (dispatch, idNum, apiMethod, actionCreator) => {
+    dispatch(toggleFollowingProgress(true, idNum))
+    const data = await apiMethod(idNum)
+
+    if (data.resultCode === 0) {
+        dispatch(actionCreator(idNum))
     }
+    dispatch(toggleFollowingProgress(false, idNum))
 }
-export const unfollow = (idNum) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, idNum))
-        usersAPI.deleteFollow(idNum).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(unfollowSuccess(idNum))
-            }
-            dispatch(toggleFollowingProgress(false, idNum))
-        })
-    }
+
+export const follow = (idNum) => async (dispatch) => {
+    followUnfollowFlow(dispatch, idNum, usersAPI.createFollow.bind(usersAPI), followSuccess)
+}
+
+export const unfollow = (idNum) => async (dispatch) => {
+    followUnfollowFlow(dispatch, idNum, usersAPI.deleteFollow.bind(usersAPI), unfollowSuccess)
 }
 
 

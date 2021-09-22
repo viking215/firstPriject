@@ -17,7 +17,7 @@ import {
 } from "../../redux/Friends-selector";
 
 
-class FriendsContainer extends React.Component {
+class FriendsContainerHook extends React.Component {
 
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
@@ -69,6 +69,6 @@ export default compose(
         toggleFollowingProgress,
         getUsers,
     }),
-)(FriendsContainer)
+)(FriendsContainerHook)
 
 

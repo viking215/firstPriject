@@ -29,7 +29,7 @@ const PostReduxForm = reduxForm({
 
 
 const MyPosts = React.memo((props) => {
-console.log("Hey")
+
     let postsElements = props.p
         .map(p => <Post message={p.text} likesCount={p.likesCount} key={p.id}/>);
 

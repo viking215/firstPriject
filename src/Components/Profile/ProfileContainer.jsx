@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {setUserProfile, getProfile, getStatus, updateStatus} from "../../redux/ProfileReducer";
@@ -7,28 +7,24 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 
-class ProfileContainer extends React.Component {
+const ProfileContainer = (props) =>  {
 
 
-    componentDidMount() {
-        let userId = this.props.match.params.userId
-        if (!userId) {
-            userId = this.props.authorizedUserId;
-        }
-        this.props.getProfile(userId)
-        this.props.getStatus(userId)
+    useEffect(() => {
+        const userId = props.match.params.userId || props.authorizedUserId
 
-    }
+        props.getProfile(userId)
+        props.getStatus(userId)
+    }, [])
 
-    render() {
+
         return (
             <div>
-                <Profile {...this.props} profile={this.props.profile} status={this.props.status}
-                         updateStatus={this.props.updateStatus}/>
+                <Profile {...props} />
             </div>
         )
     }
-}
+
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,

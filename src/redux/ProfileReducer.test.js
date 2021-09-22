@@ -1,80 +1,38 @@
-import {profileAPI} from "../api/api";
+import profileReducer, {addPostAC, deletePost} from "./ProfileReducer";
+import React from 'react'
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const SET_STATUS = 'SET_STATUS'
-
-let initialState = {
+let state = {
     postsData: [
         {id: 1, text: 'I am Batman', likesCount: 44},
-        {id: 1, text: 'Where the detonator?!', likesCount: 15},
-        {id: 2, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},
+        {id: 2, text: 'Where the detonator?!', likesCount: 15},
+        {id: 3, text: 'Where the detonator?!', likesCount: 15},
+        {id: 4, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},
     ],
-    profile: null,
-    status: '',
-}
-const profileReducer = (state = initialState, action) => {
-    console.log(action.type)
-
-    switch (action.type) {
-        case ADD_POST: {
-
-            let newPost = {id: 5, text: action.newPostText, likesCount: 0,}
-            return {
-                ...state,
-                postsData: [...state.postsData, newPost]
-            
-            }
-        }
-
-        case SET_USER_PROFILE: {
-            return {
-                ...state,
-                profile: action.profile,
-            };
-        }
-
-        case SET_STATUS: {
-            return {
-                ...state,
-                status: action.status,
-            };
-        }
-        default:
-            return state;
-    }
-    return state;
 }
 
-export const addPostAC = (newPostText) => ({type: ADD_POST, newPostText})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
-export const setStatus = (status) => ({type: SET_STATUS, status});
+it('new post should be added', () => {
+    let action = addPostAC('Hello, world!')
 
-export const getProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId).then(data => {
-            dispatch(setUserProfile(data))
-        });
-    }
-}
+    const lastElement = state.postsData.length
+    let newState = profileReducer(state, action)
 
-export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId).then(data => {
-               dispatch(setStatus(data))
-        });
+    expect(newState.postsData.length).toBe(lastElement +1)
+})
 
-    }
-}
+it('message of new post text', () => {
+    let action = addPostAC('Hello, world!')
 
-export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setStatus(status))
-            }
-        });
-    }
-}
+    const lastElement = state.postsData.length
+    let newState = profileReducer(state, action)
 
-export default profileReducer;
+    expect(newState.postsData[lastElement].text).toBe('Hello, world!')
+})
+
+it('after deleting length of messages should be decrement', () => {
+    let action = deletePost(1)
+
+    const lastElement = state.postsData.length
+    let newState = profileReducer(state, action)
+
+    expect(newState.postsData.length).toBe(lastElement -1)
+})
