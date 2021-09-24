@@ -1,19 +1,4 @@
-.app-wrapper {
-    margin: 0 auto;
-    display: grid;
-    width: auto;
-    grid-template-areas:
-    "h h"
-    "n  c";
 
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 1fr 4fr;
-    grid-gap: 0px;
-}
-
-.app-wrapper-content {
-    grid-area: c;
-    border-radius: 0px 0px 5px 0px;
-    background-color: #6f7175;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+html, body{
+    height: 100%;
 }

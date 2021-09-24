@@ -1,0 +1,8 @@
+.profile_context{
+    position: absolute;
+    height: 600px;
+    left: 650px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+

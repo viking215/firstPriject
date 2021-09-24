@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
-import s from "./FriendsItem.module.css"
+import s from "./UsersItem.module.css"
 
-const FriendsItem = (props) => {
+const UsersItem = (props) => {
     let path = "/friends" + props.id;
 
     return (
@@ -12,4 +12,4 @@ const FriendsItem = (props) => {
     )
 }
 
-export default FriendsItem
+export default UsersItem

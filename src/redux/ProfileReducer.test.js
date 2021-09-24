@@ -5,8 +5,6 @@ let state = {
     postsData: [
         {id: 1, text: 'I am Batman', likesCount: 44},
         {id: 2, text: 'Where the detonator?!', likesCount: 15},
-        {id: 3, text: 'Where the detonator?!', likesCount: 15},
-        {id: 4, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},
     ],
 }
 

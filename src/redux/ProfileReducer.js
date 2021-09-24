@@ -7,9 +7,9 @@ const DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     postsData: [
-        {id: 1, text: 'I am Batman', likesCount: 44},
+        /*{id: 1, text: 'I am Batman', likesCount: 44},
         {id: 1, text: 'Where the detonator?!', likesCount: 15},
-        {id: 2, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},
+        {id: 2, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},*/
     ],
     profile: null,
     status: '',
@@ -27,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         case DELETE_POST: {
-            return {...state, postsData: state.postsData.filter(p => p.id != action.postId)}
+            return {...state, postsData: state.postsData.filter(p => p.id !== action.postId)}
         }
 
         case SET_USER_PROFILE: {

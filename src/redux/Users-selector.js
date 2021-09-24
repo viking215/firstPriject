@@ -4,7 +4,7 @@ const FriendsDataSelector = (state) => {
     return state.friendsData.friendsData
 }
 
-export const FrieendsData = createSelector(FriendsDataSelector, (friendData) => {
+export const FriendsData = createSelector(FriendsDataSelector, (friendData) => {
     return friendData.filter(u => true)
 })
 

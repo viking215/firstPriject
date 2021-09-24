@@ -1,19 +1,13 @@
 import './App.css';
-import HeaderContainer from "./Components/Header/HeaderContainer";
-import News from "./Components/News/News";
-import Music from "./Components/Music/Music";
-import Settings from "./Components/Settings/Settings";
-import {Route, withRouter} from "react-router-dom"
-import FriendsContainer from "./Components/Friends/FriendsContainer";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import NavigationContainer from "./Components/Navigation/NavigationContainer";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
-import Login from "./Components/Login/Login";
+import 'boxicons'
+import {withRouter} from "react-router-dom"
 import {Component} from "react";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./Components/common/preloader/preloader";
+import ContextBody from "./Components/ContextBody/ContextBody";
+
 
 class App extends Component {
     componentDidMount() {
@@ -24,24 +18,9 @@ class App extends Component {
         if (!this.props.initialized) return <Preloader/>
 
         return (
-            <div className='app-wrapper'>
-                <HeaderContainer/>
-                <NavigationContainer/>
-                <div className='app-wrapper-content'>
-
-                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-
-                    <Route path="/messages" render={() => <DialogsContainer/>}/>
-
-                    <Route path="/news" render={() => <News/>}/>
-                    <Route path="/music" render={() => <Music/>}/>
-                    <Route path="/settings" render={() => <Settings/>}/>
-
-                    <Route path="/friends" render={() => <FriendsContainer/>}/>
-                    <Route path="/login" render={() => <Login/>}/>
-                </div>
+            <div>
+                <ContextBody />
             </div>
-
         );
     }
 }
@@ -53,6 +32,16 @@ const mapStateToProps = (state) => ({
 export default compose(
     withRouter,
     connect(mapStateToProps, {initializeApp})) (App);
+
+
+/*
+{isAuth
+    ? <div><button onClick={() => dispatch(authLogout)}><box-icon name='log-out' size='sm'></box-icon>
+        <div className={s.button_text}>Log out</div></button></div>
+    : <button><NavLink to={'/login'}><box-icon name='log-in'></box-icon>
+        <div className={s.button_text}>Log in</div></NavLink></button>
+}*/
+
 
 
 

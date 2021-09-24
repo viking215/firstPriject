@@ -1,13 +1,18 @@
 
-.back {
-    height: 250px;
-    width: 700px;
-}
+.back{
+    height: 300px;
 
+}
+.items {
+    position: relative;
+    top: -304px;
+
+}
 .avatar {
     border-radius: 200px;
     height: 200px;
     border: 5px solid white;
+
 }
 
 .name {
@@ -20,7 +25,14 @@
 
 
 .middle {
-    padding: 0px 10px 10px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    width: 270px;
+    height: 300px;
+
+}
+.middle .avatar_block{
+    padding: 0 0 0 10px;
 }
 
 .filter details {

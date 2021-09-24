@@ -1,0 +1,268 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 210px;
+    background: #11101d;
+    padding: 6px 14px;
+    transition: all 0.8s ;
+}
+.active {
+    width: 52px;
+}
+.active .input_search {
+    opacity: 0 !important;
+    transition: .8s opacity, .8s visibility;
+}
+.active .lg_content{
+    opacity: 0 !important;
+    transition: .8s opacity;
+}
+.active .search_icon {
+    padding-left: 15px !important;
+    transition: all 0.8s;
+}
+.sidebar .lg_content {
+    color: white;
+    display: flex;
+    height: 50px;
+    width: 150px;
+    align-items: center;
+    opacity: 1;
+    transition: .8s opacity;
+}
+
+.sidebar .lg_content .lg_name {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.sidebar .btn {
+    position: absolute;
+    right: -9px;
+    top: 11px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+    transition: .8s all;
+}
+
+.sidebar .items {
+    margin-top: 5px;
+    padding-left: 0px;
+}
+
+.sidebar .items .item {
+    position: relative;
+    height: 55px;
+    width: 100%;
+    padding-top: 5px;
+    line-height: 50px;
+}
+.sidebar .items .item .item_name{
+
+    color: gray;
+    text-decoration: none;
+    font-size: 18px;
+    align-items: center;
+    opacity: 1;
+}
+.active .item_name{
+    display: none;
+    opacity: 0 !important;
+    transition: .8s opacity;
+}
+
+
+
+.sidebar .items .item a {
+    display: flex;
+    text-decoration: none;
+    font-size: 18px;
+    align-items: center;
+    transition: all 0.6s ease;
+    border-radius: 0px 50px 50px 0px;
+}
+.active .item a {
+    border-radius: 12px !important;
+}
+.active .item a:hover{
+    background: white !important;
+}
+
+
+.sidebar .items .item a:hover {
+    background: white;
+    color: #11101d;
+}
+
+.sidebar .items .item .icon {
+    padding-right: 28px;
+    margin-left: 14px;
+    margin-top: 7px;
+}
+
+.sidebar .items .item .search {
+    padding-bottom: 15px;
+}
+
+.sidebar .items .item .search .input_search {
+    position: absolute;
+    height: 40px;
+    width: calc(100% - 60px);
+    left: 5px;
+    right: 0;
+    border-radius: 12px;
+    /*outline: none;*/
+    border: 2px #ca8019 solid;
+    background: #1b1d31;
+    font-size: 18px;
+    color: white;
+    padding-left: 60px;
+    transition: .8s opacity, .8s visibility;
+    opacity: 1;
+}
+
+.sidebar .items .item .search .search_icon {
+    position: relative;
+    z-index: 99;
+    padding-left: 12px;
+    font-size: 22px;
+    transition: all 0.8s;
+}
+
+.sidebar .profile_content {
+    position: absolute;
+    color: white;
+    bottom: 12px;
+    left: 0;
+    width: 100%;
+    background: #1b1d31;
+    border-radius: 12px 12px 0 0 ;
+}
+.active .profile_content {
+    background: #11101d;
+}
+
+.sidebar .profile_content .profile {
+    position: relative;
+    padding: 10px 6px;
+    height: 50px;
+    color: white;
+}
+
+.sidebar .profile_content .profile .profile_details {
+    display: flex;
+    height: 50px;
+    width: 175px;
+    align-items: center;
+    opacity: 1;
+    transition: .8s opacity;
+    opacity: 1 ;
+}
+.active .profile_details {
+    opacity: 0 !important;
+}
+
+.sidebar .profile_content .profile .profile_details img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.sidebar .profile_content .profile .profile_details .name_job {
+    margin-left: 10px;
+}
+
+.sidebar .profile_content .profile .profile_details .name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sidebar .profile_content .profile .profile_details .job {
+    font-size: 14px;
+}
+
+.sidebar .profile_content .profile .loginBlock {
+    position: absolute;
+    right: -9px;
+    bottom: 8px;
+    transform: translateX(-50%);
+    min-width: 37px;
+    line-height: 40px;
+    border-radius: 15px;
+}
+.sidebar .profile_content .profile .loginBlock .button_log{
+    display: flex;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    text-align: center;
+    font-size: 10px;
+    margin: 0px;
+
+}
+.sidebar .profile_content .profile .loginBlock button{
+    background-color: #11101d;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.sidebar .profile_content .profile .loginBlock button a{
+    text-decoration: none;
+}
+.sidebar .profile_content .profile .loginBlock .button_log .button_name{
+    color: gray;
+}
+
+.home_content {
+    padding-left: 238px;
+    height: 100%;
+    width: 100%;
+    transition: all .8s;
+    background-color: #8fa2bb;
+}
+
+.home_content .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: #1b1d31;
+
+}
+
+
+.sidebar .items .item .tooltip {
+    position: absolute;
+    left: 70px;
+    top: 0;
+    transform: translateY(-42%);
+    height: 50px;
+    width: 122px;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    color: #1b1d31;
+    border-radius: 8px;
+    line-height: 50px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.active .item:hover .tooltip {
+    opacity: 1;
+    top: 50%;
+    transition: .55s opacity, .55s visibility;}
+
+.active_home{
+    padding-left: 80px;
+}
+.components{
+    position: relative;
+    width: 960px;
+    left: 400px;
+}
+

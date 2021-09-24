@@ -17,7 +17,7 @@ let initialState = {
     isFetching: true,
     followingInProgress: [],
 }
-const friendsReducer = (state = initialState, action) => {
+const userssReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case FOLLOW:
@@ -100,4 +100,4 @@ export const unfollow = (idNum) => async (dispatch) => {
 }
 
 
-export default friendsReducer;
+export default userssReducer;

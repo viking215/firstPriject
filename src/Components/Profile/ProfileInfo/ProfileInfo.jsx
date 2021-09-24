@@ -1,25 +1,29 @@
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/preloader/preloader";
-import profileBackground from "../../../assets/images/profileBackground.jpg"
 import userPhoto from "../../../assets/images/user.png"
 import ProfileStatus from "./ProfileStatus"
+import profileDef from '../../../common/images/profileDef.png'
+import React from "react";
+import background_profile from '../../../assets/images/background_profile.jpg'
 
 const ProfileInfo = (props) => {
 
-    if (!props.profile) {
-        return <Preloader/>
-    }
     return (
-        <div className={s.head}>
-            <img className={s.back} src={profileBackground}/>
 
-            <div>
+        <div className={s.head}>
+            <img className={s.back} src={background_profile}/>
+            <div className={s.items}>
                 <div className={s.middle}>
-                    <img className={s.avatar} src={props.profile.photos.large != null ?
-                        props.profile.photos.large : userPhoto}/>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+
+                    <div className={s.avatar_block}>
+                        <img className={s.avatar} src={props.profile.photos.large != null ?
+                            props.profile.photos.large : profileDef}/>
+                    </div>
                     <span className={s.name}>{props.profile.fullName}</span>
-                    <div>About me: {props.profile.aboutMe}</div>
+                    <div className={s.status}>
+                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    </div>
+                    {/*<div>About me: {props.profile.aboutMe}</div>*/}
                 </div>
                 <div className={s.filter}>
                     <details>
