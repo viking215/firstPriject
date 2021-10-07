@@ -3,12 +3,12 @@ import styles from "./pagination.module.css"
 import {useState} from "react";
 
 const Pagination = (props) => {
-    const [currentPage, setCurrentPage] = useState(1)
-    const startShowingPage = currentPage - 3 < 0 ? 0 : currentPage - 3;
+
+    const startShowingPage = props.currentPage - 3 < 0 ? 0 : props.currentPage - 3;
     const endShowingPage = startShowingPage + 6;
 
 
-    const {totalUsersCount, pageSize} = props;
+    const {totalUsersCount, pageSize, currentPage, setCurrentPage} = props;
 
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
     const pages = [];
