@@ -1,24 +1,17 @@
 import React, {useEffect} from "react";
 import Pagination from "../../libs/Pagination";
 import User from "./User";
-import {
-    CurrentPage,
-    FollowingInProgress,
-    IsFetching,
-    PageSize,
-    TotalUsersCount
-} from "../../redux/Users-selector";
 import {useDispatch, useSelector} from "react-redux";
-import {follow, getUsers, unfollow} from "../../redux/UserssReducer";
+import {follow, getUsers, unfollow} from "../../redux/UsersReducer";
 import Preloader from "../common/preloader/preloader";
 
 
 const Users = () => {
-    const pageSize = useSelector(PageSize)
-    const totalUsersCount = useSelector(TotalUsersCount)
-    const currentPage = useSelector(CurrentPage)
-    const isFetching = useSelector(IsFetching)
-    const followingInProgress = useSelector(FollowingInProgress)
+    const pageSize = useSelector((state) => state.friendsData.pageSize)
+    const totalUsersCount = useSelector((state) => state.friendsData.totalUsersCount)
+    const currentPage = useSelector((state) => state.friendsData.currentPage)
+    const isFetching = useSelector((state) => state.friendsData.isFetching)
+    const followingInProgress = useSelector((state) => state.friendsData.followingInProgress)
     const friendsData = useSelector((state) => state.friendsData.friendsData)
 
     const dispatch = useDispatch()

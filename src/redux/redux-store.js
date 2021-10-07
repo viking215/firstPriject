@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import profileReducer from "./ProfileReducer";
 import dialogsReducer from "./DialogsReducer";
 import sidebarReducer from "./SidebarReducer";
-import userssReducer from "./UserssReducer";
+import usersReducer from "./UsersReducer";
 import authReducer from "./authReducer";
 import { reducer as formReducer} from 'redux-form'
 import thunkMiddleware from "redux-thunk"
@@ -12,7 +12,7 @@ let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     sidebarPage: sidebarReducer,
-    friendsData: userssReducer,
+    friendsData: usersReducer,
     auth: authReducer,
     app: appReducer,
     form: formReducer

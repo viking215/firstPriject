@@ -31,7 +31,7 @@ const PostReduxForm = reduxForm({
 const MyPosts = React.memo((props) => {
 
     let postsElements = props.p
-        .map(p => <Post message={p.text} likesCount={p.likesCount} key={p.id}/>);
+        .map(p => <Post key={p.key} message={p.text} likesCount={p.likesCount} key={p.id}/>);
 
 
     let addNewPost = (values) => {

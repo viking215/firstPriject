@@ -1,14 +1,15 @@
 import 'boxicons'
+import React, {Suspense} from 'react'
 import s from './contextBody.module.css'
 import {NavLink, Route} from "react-router-dom";
 import {useState} from "react";
 import ProfileContainer from "../Profile/ProfileContainer";
-import DialogsContainer from "../Dialogs/DialogsContainer";
-import Users from "../Users/Users";
-import Login from "../Login/Login";
 import {useDispatch, useSelector} from "react-redux";
 import {authLogout} from "../../redux/authReducer";
 import profileDef from '../../common/images/profileDef.png'
+const DialogsContainer = React.lazy(() => import("./../Dialogs/DialogsContainer"))
+const Users = React.lazy(() => import("../Users/Users"))
+const Login = React.lazy(() => import("../Login/Login"))
 
 const ContextBody = (props) => {
     const isAuth = useSelector(state => state.auth.isAuth)
@@ -103,9 +104,12 @@ const ContextBody = (props) => {
             <div className={`${s.home_content} ${shift ? '' : s.active_home}`}>
                 <div className={s.components}>
                     <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                    <Route path="/messages" render={() => <DialogsContainer/>}/>
-                    <Route path="/users" render={() => <Users/>}/>
-                    <Route path="/login" render={() => <Login/>}/>
+                    <Suspense fallback={'loading'}>
+                        <Route path="/messages" render={() => <DialogsContainer/>}/>
+                        <Route path="/users" render={() => <Users/>}/>
+                        <Route path="/login" render={() => <Login/>}/>
+                    </Suspense>
+
                 </div>
             </div>
         </div>

@@ -10,13 +10,16 @@ import style from "../common/FormsControls/formsControls.module.css"
 
 const maxLength30 = maxLengthCreator(30)
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
-                {createField('Email', 'email', null, Input, [required, maxLength30])}
-                {createField('Password', 'password', 'password', Input, [required, maxLength30])}
-                {createField(null, 'rememberMe', "checkbox", Input, null)}
-                Remember me
+            {createField('Email', 'email', null, Input, [required, maxLength30])}
+            {createField('Password', 'password', 'password', Input, [required, maxLength30])}
+            {createField(null, 'rememberMe', "checkbox", Input, null)}
+            Remember me
+            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl &&  createField('symbols', 'captcha', null, Input, [required])}
+
             {error && <div className={style.formSummaryError}>
                 {error}
             </div>
@@ -33,7 +36,7 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.authLogin(formData.email, formData.password, formData.rememberMe)
+        props.authLogin(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
     if (props.isAuth) {
         return <Redirect to={'/profile'}/>
@@ -41,12 +44,13 @@ const Login = (props) => {
     return (
         <div>
             <h1>login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
+    captchaUrl: state.auth.captchaUrl,
     isAuth: state.auth.isAuth
 })
 
