@@ -1,12 +1,13 @@
 import 'boxicons'
 import React, {Suspense} from 'react'
 import s from './contextBody.module.css'
-import {NavLink, Route} from "react-router-dom";
+import {NavLink, Redirect, Route,} from "react-router-dom";
 import {useState} from "react";
 import ProfileContainer from "../Profile/ProfileContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {authLogout} from "../../redux/authReducer";
 import profileDef from '../../common/images/profileDef.png'
+
 const DialogsContainer = React.lazy(() => import("./../Dialogs/DialogsContainer"))
 const Users = React.lazy(() => import("../Users/Users"))
 const Login = React.lazy(() => import("../Login/Login"))
@@ -75,7 +76,6 @@ const ContextBody = (props) => {
                     </div>
                     <div className={s.profile_content}>
                         <div className={s.profile}>
-
                             {isAuth
                                 ? <div className={s.profile_details}><img src={profileDef}/>
                                     <div className={s.name_job}>
@@ -85,17 +85,22 @@ const ContextBody = (props) => {
                                 </div>
                                 : <></>}
 
-
                             <span className={s.loginBlock}>
                     {isAuth
                         ? <div>
-                            <button onClick={() => dispatch(authLogout)}><div className={s.button_log}>
-                                <box-icon name='log-out' color='gray'></box-icon>
-                                <div className={s.button_name}>log out</div></div></button>
+                            <button onClick={() => dispatch(authLogout)}>
+                                <div className={s.button_log}>
+                                    <box-icon name='log-out' color='gray'></box-icon>
+                                    <div className={s.button_name}>log out</div>
+                                </div>
+                            </button>
                         </div>
-                        : <button><NavLink to={'/login'}><div className={s.button_log}>
-                            <box-icon name='log-in' color='gray'></box-icon>
-                            <div className={s.button_name}>log in</div></div></NavLink></button>}
+                        : <button><NavLink to={'/login'}>
+                            <div className={s.button_log}>
+                                <box-icon name='log-in' color='gray'></box-icon>
+                                <div className={s.button_name}>log in</div>
+                            </div>
+                        </NavLink></button>}
             </span>
                         </div>
                     </div>
@@ -103,13 +108,14 @@ const ContextBody = (props) => {
             </div>
             <div className={`${s.home_content} ${shift ? '' : s.active_home}`}>
                 <div className={s.components}>
+                    <Route exact path="/" render={() => <ProfileContainer/>}/>
+                    <Redirect from="/" to="/profile"/>
                     <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
                     <Suspense fallback={'loading'}>
                         <Route path="/messages" render={() => <DialogsContainer/>}/>
                         <Route path="/users" render={() => <Users/>}/>
                         <Route path="/login" render={() => <Login/>}/>
                     </Suspense>
-
                 </div>
             </div>
         </div>

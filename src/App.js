@@ -1,5 +1,4 @@
 import './App.css';
-import 'boxicons'
 import {withRouter} from "react-router-dom"
 import {Component} from "react";
 import {connect} from "react-redux";
@@ -34,13 +33,6 @@ export default compose(
     connect(mapStateToProps, {initializeApp})) (App);
 
 
-/*
-{isAuth
-    ? <div><button onClick={() => dispatch(authLogout)}><box-icon name='log-out' size='sm'></box-icon>
-        <div className={s.button_text}>Log out</div></button></div>
-    : <button><NavLink to={'/login'}><box-icon name='log-in'></box-icon>
-        <div className={s.button_text}>Log in</div></NavLink></button>
-}*/
 
 
 
