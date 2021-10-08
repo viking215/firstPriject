@@ -1,0 +1,26 @@
+.item {
+    color: black;
+    margin: 20px 0px 0px 0px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #6f7175;
+    background-color: #859eff;
+    border-radius: 5px;
+
+}
+
+.item img {
+    width: 70px;
+    border-radius: 50px;
+    border: 2px solid lightseagreen;
+}
+
+.text {
+    margin-left: 30px;
+}
+ .likes {
+     margin-top: 5px;
+ }
+
+ .likes span img {
+     width: 15px;
+     border: none;
+ }

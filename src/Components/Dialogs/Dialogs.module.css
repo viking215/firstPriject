@@ -1,0 +1,92 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    grid-gap: 0px;
+}
+
+.image {
+    height: 60px;
+    border-radius: 50px;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    background-color: #859eff;
+    margin: 7px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #929292;
+}
+
+.dialogsItems {
+    margin: 5px 0px 0px 5px;
+    padding: 10px;
+
+}
+
+.dialog a.active {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #2f3033;
+
+}
+
+
+.messages {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 1fr;
+    align-items: end;
+    justify-items: start;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: seashell;
+    grid-row-gap: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #6f7175;
+
+}
+.pad {
+    padding: 0px 10px 0px 5px;
+}
+
+.send {
+    display: grid;
+    grid-template-columns: 5fr 70px;
+    grid-auto-rows: minmax(60px, 65px);
+    grid-column-gap: 5px;
+}
+.send button {
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #8ab4f8;
+    border-radius: 7px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #6f7175;
+    width: 70px;
+
+}
+.send textarea {
+    border-radius: 7px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #6f7175;
+    border-color: #859eff;
+}
+
+.mcont {
+    width: 100%;
+}
+
+.mes {
+    margin-bottom: 10px;
+    background-color: #859eff;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+
+
