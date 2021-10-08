@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d5804199-597d-4b16-819e-16be5cbe59a8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vgFLP5R0VfWymYkZRX05bTd2H1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SimpleMessager/src/Components/Profile/ProfileInfo/ProfileInfo.jsx" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/Friends" />
+      <recent name="$PROJECT_DIR$/src/Components/Profile" />
+      <recent name="$PROJECT_DIR$/src/redux" />
+      <recent name="$PROJECT_DIR$/src/Components/Profile/ProfileInfo" />
+      <recent name="$PROJECT_DIR$/src/Components/common/FormsControls" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.after deleting length of messages should be decrement">
+    <configuration name="after deleting length of messages should be decrement" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/redux/ProfileReducer.test.js" />
+      <test-names>
+        <test-name value="after deleting length of messages should be decrement" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="new post should be added text" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/redux/ProfileReducer.test.js" />
+      <test-names>
+        <test-name value="new post should be added text" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="predeoloy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="predeoloy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.predeoloy" />
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="Jest.after deleting length of messages should be decrement" />
+        <item itemvalue="Jest.new post should be added text" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d5804199-597d-4b16-819e-16be5cbe59a8" name="Default Changelist" comment="" />
+      <created>1626975771475</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626975771475</updated>
+      <workItem from="1626975776318" duration="347000" />
+      <workItem from="1626976269225" duration="74000" />
+      <workItem from="1626976499391" duration="213000" />
+      <workItem from="1627109504802" duration="2315000" />
+      <workItem from="1627117174784" duration="1385000" />
+      <workItem from="1627283220299" duration="12595000" />
+      <workItem from="1627322492079" duration="3000" />
+      <workItem from="1627366942927" duration="10491000" />
+      <workItem from="1627404542161" duration="7378000" />
+      <workItem from="1627416340869" duration="247000" />
+      <workItem from="1627451871164" duration="20306000" />
+      <workItem from="1627495575731" duration="4326000" />
+      <workItem from="1627536041605" duration="17579000" />
+      <workItem from="1627576707723" duration="1208000" />
+      <workItem from="1627626438242" duration="7822000" />
+      <workItem from="1628009531366" duration="871000" />
+      <workItem from="1628058280597" duration="10288000" />
+      <workItem from="1628092186186" duration="11636000" />
+      <workItem from="1628141438299" duration="621000" />
+      <workItem from="1628185922504" duration="6740000" />
+      <workItem from="1628270968821" duration="599000" />
+      <workItem from="1628323881988" duration="714000" />
+      <workItem from="1628490125349" duration="662000" />
+      <workItem from="1629221863490" duration="1988000" />
+      <workItem from="1629307563126" duration="1645000" />
+      <workItem from="1629310327713" duration="2072000" />
+      <workItem from="1629351549691" duration="668000" />
+      <workItem from="1629885058130" duration="738000" />
+      <workItem from="1629961636626" duration="3938000" />
+      <workItem from="1630128685478" duration="999000" />
+      <workItem from="1630148122285" duration="4318000" />
+      <workItem from="1630392123031" duration="599000" />
+      <workItem from="1630431531324" duration="3185000" />
+      <workItem from="1630478384924" duration="17441000" />
+      <workItem from="1630559551670" duration="659000" />
+      <workItem from="1630646354346" duration="4601000" />
+      <workItem from="1630673617505" duration="1854000" />
+      <workItem from="1630906278258" duration="1274000" />
+      <workItem from="1631174432143" duration="1839000" />
+      <workItem from="1631303532236" duration="1105000" />
+      <workItem from="1631305413216" duration="1019000" />
+      <workItem from="1631387375829" duration="970000" />
+      <workItem from="1631605000662" duration="10308000" />
+      <workItem from="1631627864950" duration="22000" />
+      <workItem from="1631637873279" duration="5724000" />
+      <workItem from="1632119803157" duration="3324000" />
+      <workItem from="1632159755024" duration="43000" />
+      <workItem from="1632160006158" duration="3105000" />
+      <workItem from="1632203695481" duration="1817000" />
+      <workItem from="1632301318448" duration="283000" />
+      <workItem from="1632313116418" duration="1386000" />
+      <workItem from="1632333296525" duration="5131000" />
+      <workItem from="1632375400077" duration="1041000" />
+      <workItem from="1632376487043" duration="999000" />
+      <workItem from="1632390361386" duration="2774000" />
+      <workItem from="1632395239162" duration="969000" />
+      <workItem from="1632399120549" duration="3065000" />
+      <workItem from="1632402784891" duration="603000" />
+      <workItem from="1632414522045" duration="4766000" />
+      <workItem from="1632427577197" duration="23000" />
+      <workItem from="1632464037741" duration="842000" />
+      <workItem from="1632508662180" duration="404000" />
+      <workItem from="1632509101732" duration="97000" />
+      <workItem from="1632509726012" duration="95000" />
+      <workItem from="1632509931143" duration="168000" />
+      <workItem from="1632647203387" duration="3441000" />
+      <workItem from="1632666727747" duration="7019000" />
+      <workItem from="1632907077547" duration="2876000" />
+      <workItem from="1632945545229" duration="551000" />
+      <workItem from="1632981516430" duration="599000" />
+      <workItem from="1632988836773" duration="2651000" />
+      <workItem from="1632995860680" duration="4795000" />
+      <workItem from="1633003881303" duration="69000" />
+      <workItem from="1633003991764" duration="10157000" />
+      <workItem from="1633020634492" duration="356000" />
+      <workItem from="1633023778452" duration="640000" />
+      <workItem from="1633029368388" duration="128000" />
+      <workItem from="1633161117340" duration="11545000" />
+      <workItem from="1633181405324" duration="974000" />
+      <workItem from="1633247318838" duration="1334000" />
+      <workItem from="1633278238029" duration="3318000" />
+      <workItem from="1633499515995" duration="1198000" />
+      <workItem from="1633506500505" duration="4264000" />
+      <workItem from="1633540681019" duration="44000" />
+      <workItem from="1633540770228" duration="4483000" />
+      <workItem from="1633588908983" duration="7711000" />
+      <workItem from="1633634159957" duration="99000" />
+      <workItem from="1633671332473" duration="2565000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
