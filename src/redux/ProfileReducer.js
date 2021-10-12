@@ -6,16 +6,17 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 const DELETE_POST = 'DELETE_POST'
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
+const SET_EDIT_MODE = 'SET_EDIT_MODE'
 
 
 let initialState = {
     postsData: [
-        {id: 1, text: 'I am Batman', likesCount: 44},
-        {id: 1, text: 'Where the detonator?!', likesCount: 15},
-        {id: 2, text: "You couldn't give it to an ordinary person in the crowd.", likesCount: 25},
+        {id: 1, text: 'test text', likesCount: 10},
+
     ],
     profile: null,
     status: '',
+    editMode: false,
 }
 const profileReducer = (state = initialState, action) => {
 
@@ -49,6 +50,7 @@ const profileReducer = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS: {
             return {...state, profile: {...state.profile, photos: action.photos}};
         }
+
         default:
             return state;
     }
@@ -65,6 +67,8 @@ export const getProfile = (userId) => async (dispatch) => {
     const data = await profileAPI.getProfile(userId)
     dispatch(setUserProfile(data))
 }
+
+
 
 
 export const getStatus = (userId) => async (dispatch) => {
@@ -92,7 +96,6 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     if (data.resultCode === 0) {
         dispatch(getProfile(userId))
     } else {
-
         dispatch(stopSubmit("editProfile", {_error: data.messages[0]}))
         return Promise.reject(data.messages[0])
     }

@@ -1,23 +1,29 @@
 import s from './ProfileInfo.module.css'
 import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from "react-redux";
+import {updateStatus} from "../../../redux/ProfileReducer";
 
-const ProfileStatus = (props) => {
+const ProfileStatus = () => {
+    const status = useSelector((state) => state.profilePage.status)
 
     const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(props.status);
+    const [editedStatus, setStatus] = useState(status);
 
+
+
+    const dispatch = useDispatch()
     
 
     useEffect(() => {
-        setStatus(props.status);
-    }, [props.status]);
+        setStatus(status);
+    }, [status]);
 
     const activateEditMode = () => {
         setEditMode(true)
     }
     const deactivateEditMode = () => {
         setEditMode(false)
-         props.updateStatus(status)
+         dispatch(updateStatus(editedStatus))
      }
 
     const onStatusChange = (e) => {
@@ -31,13 +37,13 @@ const ProfileStatus = (props) => {
         <div>
             {!editMode &&
             <div>
-                <b>Status: </b><span onDoubleClick={activateEditMode}>{props.status || 'Click for set status'}</span>
+                <b>Status: </b><span onDoubleClick={activateEditMode}>{status || 'Click for set status'}</span>
             </div>
             }
             {editMode &&
             <div>
                 <input onChange={onStatusChange} autoFocus={handleFocus} onBlur={deactivateEditMode}
-                       value={status}/>
+                       value={editedStatus}/>
             </div>
             }
         </div>

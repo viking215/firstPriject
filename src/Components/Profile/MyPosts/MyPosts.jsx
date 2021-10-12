@@ -4,6 +4,8 @@ import React from 'react'
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utilities/validation/validators";
 import {Textarea} from "../../common/FormsControls/formsControls";
+import {useDispatch, useSelector} from "react-redux";
+import {addPostAC} from "../../../redux/ProfileReducer";
 
 const maxLength15 = maxLengthCreator(15)
 
@@ -28,15 +30,18 @@ const PostReduxForm = reduxForm({
 })(addPostForm)
 
 
-const MyPosts = React.memo((props) => {
+const MyPosts = React.memo(() => {
 
-    let postsElements = props.p
-        .map(p => <Post key={p.key} message={p.text} likesCount={p.likesCount} key={p.id}/>);
+    const p = useSelector((state) => state.profilePage.postsData)
+
+    const dispatch = useDispatch()
+
+    let postsElements = p.map(p => <Post key={p.key} message={p.text} likesCount={p.likesCount} key={p.id}/>);
 
 
     let addNewPost = (values) => {
-        props.addPostAC(values.newPostText);
-        }
+        dispatch(addPostAC(values.newPostText));
+    }
 
 
     return (

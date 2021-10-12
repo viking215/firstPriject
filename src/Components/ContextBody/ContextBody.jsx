@@ -3,12 +3,12 @@ import React, {Suspense} from 'react'
 import s from './contextBody.module.css'
 import {NavLink, Redirect, Route,} from "react-router-dom";
 import {useState} from "react";
-import ProfileContainer from "../Profile/ProfileContainer";
 import {useDispatch, useSelector} from "react-redux";
 import {authLogout} from "../../redux/authReducer";
 import profileDef from '../../common/images/profileDef.png'
+import Profile from "../Profile/Profile";
 
-const DialogsContainer = React.lazy(() => import("./../Dialogs/DialogsContainer"))
+const Dialogs = React.lazy(() => import("./../Dialogs/Dialogs"))
 const Users = React.lazy(() => import("../Users/Users"))
 const Login = React.lazy(() => import("../Login/Login"))
 
@@ -108,11 +108,11 @@ const ContextBody = (props) => {
             </div>
             <div className={`${s.home_content} ${shift ? '' : s.active_home}`}>
                 <div className={s.components}>
-                    <Route exact path="/" render={() => <ProfileContainer/>}/>
+                    <Route exact path="/" render={() => <Profile/>}/>
                     <Redirect from="/" to="/profile"/>
-                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                    <Route path="/profile/:userId?" render={() => <Profile/>}/>
                     <Suspense fallback={'loading'}>
-                        <Route path="/messages" render={() => <DialogsContainer/>}/>
+                        <Route path="/messages" render={() => <Dialogs/>}/>
                         <Route path="/users" render={() => <Users/>}/>
                         <Route path="/login" render={() => <Login/>}/>
                     </Suspense>

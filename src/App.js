@@ -1,36 +1,33 @@
 import './App.css';
-import {withRouter} from "react-router-dom"
-import {Component} from "react";
-import {connect} from "react-redux";
-import {compose} from "redux";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./Components/common/preloader/preloader";
 import ContextBody from "./Components/ContextBody/ContextBody";
 
 
-class App extends Component {
-    componentDidMount() {
-        this.props.initializeApp()
-    }
+const App = () => {
 
-    render() {
-        if (!this.props.initialized) return <Preloader/>
+    const initialized = useSelector((state) => state.app.initialized);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(initializeApp())
+    }, [])
+
+        if (!initialized) return <Preloader/>
 
         return (
             <div>
                 <ContextBody />
             </div>
         );
-    }
+
 }
 
-const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
-})
 
-export default compose(
-    withRouter,
-    connect(mapStateToProps, {initializeApp})) (App);
+
+export default App
 
 
 

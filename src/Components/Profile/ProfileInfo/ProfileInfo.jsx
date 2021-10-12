@@ -4,18 +4,27 @@ import profileDef from '../../../common/images/profileDef.png'
 import React, {useState} from "react";
 import background_profile from '../../../assets/images/background_profile.jpg'
 import ProfileDataForm from "./ProfileDataForm";
+import {
+    savePhoto,
+    saveProfile,
+} from "../../../redux/ProfileReducer";
+import {useDispatch} from "react-redux";
 
 const ProfileInfo = (props) => {
 
     const [editMode, setEditMode] = useState(false);
 
+    /*setUserProfile, getProfile, getStatus, updateStatus, savePhoto, saveProfile*/
+
+    const dispatch = useDispatch()
+
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
-            props.savePhoto(e.target.files[0])
+            dispatch(savePhoto(e.target.files[0]))
         }
     }
     const onSubmit = (formData) => {
-        props.saveProfile(formData).then(
+        dispatch(saveProfile(formData)).then(
             () => {
                 setEditMode(false);
             }
@@ -23,7 +32,6 @@ const ProfileInfo = (props) => {
     }
 
     return (
-
         <div className={s.head}>
             <img className={s.back} src={background_profile}/>
             <div className={s.items}>
@@ -34,7 +42,7 @@ const ProfileInfo = (props) => {
                     {!props.isOwner && <input type={"file"} onChange={onMainPhotoSelected}/>}
                     <span className={s.name}><b>{props.profile.fullName}</b></span>
                     <div className={s.status}>
-                        {!props.isOwner && <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>}
+                        {!props.isOwner && <ProfileStatus />}
                     </div>
                 </div>
                 { editMode

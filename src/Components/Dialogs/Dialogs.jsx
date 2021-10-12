@@ -5,11 +5,15 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../utilities/validation/validators";
 import {Textarea} from "../common/FormsControls/formsControls";
+import {useDispatch, useSelector} from "react-redux";
+import {sendMes} from "../../redux/DialogsReducer";
+import {useAuth} from "../../hoc/withAuthRedirect";
 
 
 const maxLength100 = maxLengthCreator(100)
 
 const MessageForm = (props) => {
+
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -27,16 +31,22 @@ const MessageReduxForm = reduxForm({
     form: 'message'
 })(MessageForm)
 
-const Dialogs = (props) => {
+const Dialogs = () => {
 
-    let dialogsElements = props.dialogsPage.dialogsData
+    const dialogsPage = useSelector((state) => state.dialogsPage)
+
+    const dispatch = useDispatch()
+
+    useAuth()
+
+    let dialogsElements = dialogsPage.dialogsData
         .map(dialog => <DialogItem avatar={dialog.ava} name={dialog.name} key={dialog.id} id={dialog.id}/>);
-    let messagesElements = props.dialogsPage.messagesData
+    let messagesElements = dialogsPage.messagesData
         .map(message => <MessageItem text={message.text} key={message.id}/>);
 
 
     const addNewMessage = (values) => {
-        props.sendMes(values.newMessageText)
+        dispatch(sendMes(values.newMessageText))
     }
     return (
 
