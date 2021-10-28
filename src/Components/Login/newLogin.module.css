@@ -1,0 +1,13 @@
+.body {
+    color: #11101d;
+    padding-left: 100px;
+
+}
+.items {
+    width: 350px;
+    background-color: seashell;
+    padding-left: 100px;
+}
+.items .item {
+    margin-top: 10px;
+}

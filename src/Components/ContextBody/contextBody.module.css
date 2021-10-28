@@ -234,6 +234,9 @@
 
 }
 
+.itemIcon {
+    color: #6f7175;
+}
 
 .sidebar .items .item .tooltip {
     position: absolute;

@@ -69,6 +69,12 @@
     width: 70px;
 
 }
+.send .sendBtn {
+    background-color: #859eff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    font-size: 12px;
+}
 .send textarea {
     border-radius: 7px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #6f7175;
